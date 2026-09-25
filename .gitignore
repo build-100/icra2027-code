@@ -1,0 +1,19 @@
+# Local environments, experimental records, and migration provenance
+/.venv/
+/.local/
+/results/*
+!/results/README.md
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+/build/
+/dist/
+*.pt
+*.pth
+*.bag
+*.db3
+*.mcap
+*.log
+.env
+.env.*

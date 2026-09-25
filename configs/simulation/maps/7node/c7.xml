@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="c7-changed-route" name="S2 C7 - starts 0,4">
+    <mxGraphModel grid="1" gridSize="10" connect="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="node0" value="0" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1" robot_start="R1">
+          <mxGeometry x="400" y="126.79491924311228" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node1" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node2" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="500" y="500" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node3" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="500" y="700" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node4" value="4" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1" robot_start="R2">
+          <mxGeometry x="300" y="700" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node5" value="5" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="500" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="node6" value="6" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge0_1" value="" source="node0" target="node1" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge0_6" value="" source="node0" target="node6" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6_1" value="" source="node6" target="node1" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1_2" value="" source="node1" target="node2" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2_3" value="" source="node2" target="node3" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3_4" value="" source="node3" target="node4" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4_5" value="" source="node4" target="node5" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5_6" value="" source="node5" target="node6" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5_2" value="" source="node5" target="node2" edge="1" parent="1" distance="1.0" weight="1.0" omega="1.0" d_opt="1.0" style="edgeStyle=none;rounded=0;curved=0;html=1;startArrow=none;endArrow=none;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="calLeft" value="L" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="100" y="950" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="calMiddle" value="M" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="850" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="calRight" value="R" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="500" y="950" width="40" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

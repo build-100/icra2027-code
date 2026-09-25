@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gevd"
+version = "0.1.0"
+description = "GEVD: multi-robot graph exploration with value decomposition and retrospective utility"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {file = "LICENSE"}
+dynamic = ["dependencies"]
+
+[project.scripts]
+gevd = "gevd.cli:main"
+gevd-ablation = "ablations.run:main"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gevd*", "ablations*", "baselines*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--basetemp=results/generated/pytest"

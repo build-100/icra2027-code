@@ -1,0 +1,18 @@
+{
+  "status": "external_data_on_user_Ubuntu",
+  "regions_in_paper_figure": 7,
+  "robot_count": 2,
+  "hardware": "PUWEI-S30; Velodyne VLP-16; depth camera",
+  "topology_file": null,
+  "metric_scale": null,
+  "start_nodes": null,
+  "T_max": null,
+  "beta": null,
+  "bag_location": "User-managed Ubuntu; outside this task scope",
+  "note": "The supplied figures establish qualitative adjacency and illustrated starts. Calibrated deployment parameters are unavailable; later office experiments are excluded.",
+  "illustrated_topology_file": "configs/real/paper7_external/illustrated_topology.json",
+  "illustrated_start_regions": [
+    0,
+    4
+  ]
+}

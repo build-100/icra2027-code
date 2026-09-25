@@ -1,0 +1,6 @@
+# Portable dependency ranges. Tested versions are in ENVIRONMENT.md.
+numpy>=1.26,<3
+networkx>=3.2,<4
+PyYAML>=6,<7
+torch>=2.2,<3
+matplotlib>=3.8,<4

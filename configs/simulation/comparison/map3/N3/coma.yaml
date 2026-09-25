@@ -1,0 +1,59 @@
+environment:
+  graph_path: configs/simulation/maps/map3/map3
+  map_width: 74.0
+  robot_count: 3
+  start_nodes:
+  - 3
+  - 8
+  - 29
+  t_max: 17
+reward:
+  alpha: reciprocal_num_regions
+  beta: 0.0004888358774343792
+  rho_v: 0.1
+  rho_g: 1.0
+  pair_factor_weight: median_traversal
+  catalog_counting: robot_edge_and_pair_region_instances
+vdn:
+  seed: 906300
+  device: cpu
+event_aligned:
+  enabled: false
+mcbr:
+  enabled: false
+  branch_roots_per_episode: 0
+  branch_fraction: 0.0
+policy_retention:
+  enabled: false
+search:
+  total_simulator_budget: 25000
+  verified_complete_candidates: true
+experiment:
+  method: coma
+  seed: 906300
+  source_version: standard_common_task_v1
+  version: standard_common_reward25k_v1
+  fresh: true
+  display_method: coma
+  phase: map3_qmix_coma_retrain_reward01_1_seed906300_20260915
+  report_selection: best budget-verified successful path
+optimizer:
+  type: RMSprop
+  learning_rate: 0.0005
+  schedule: constant
+  basis: actual budget C
+  internal_reward_scale: 0.1
+  reported_G_scale: 1.0
+epsilon_schedule:
+  start: 1.0
+  end: 0.05
+  decay_end_calls: 15000
+  basis: actual budget C before every joint action
+  evaluation: 0.0
+reporting:
+  eval_interval_calls: 500
+  current_greedy: true
+  record_actual_C: true
+  readonly: true
+output:
+  directory: results/generated/coma

@@ -1,0 +1,134 @@
+environment:
+  graph_path: configs/simulation/maps/map7/map7
+  map_width: 138.2
+  robot_count: 3
+  start_nodes:
+  - 0
+  - 11
+  - 16
+  t_max: 11
+reward:
+  alpha: reciprocal_num_regions
+  beta: 0.00035512450575036835
+  rho_v: 0.4
+  rho_g: 1.0
+  pair_factor_weight: median_traversal
+  catalog_counting: robot_edge_and_pair_region_instances
+vdn:
+  double_dqn: true
+  episodes: 0
+  hidden_dim: 128
+  gamma: 1.0
+  learning_rate: 5.0e-05
+  batch_size: 64
+  factual_replay_capacity: 20000
+  min_factual_replay: 256
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay_steps: 15000
+  target_update_interval: 10
+  updates_per_episode: 0
+  updates_per_factual_step: 0.5
+  gradient_clip: 10.0
+  seed: 906300
+  device: cpu
+  cpu_threads: 1
+  td_reward_scale: 0.1
+  graph_message_passing_layers: 3
+  graph_residual_updates: true
+  normalize_local_features: true
+  network_initialization: relu_orthogonal
+mcbr:
+  branch_replay_capacity: 20000
+  branch_roots_per_episode: 0
+  branch_fraction: 0.0
+event_aligned:
+  enabled: false
+  mode: paired_return
+  source: factual_only
+  event_classes:
+  - E3
+  assignment_rule: first_arrival_equal
+  qualification: terminal_success_chain
+  trace_rule: causal_prefix_decay
+  trace_decay: 0.8
+  credit_per_event: 1.0
+  margin_scale: 1.0
+  loss_weight: 0.0
+  replay_capacity: 20000
+  batch_size: 32
+  paired_return:
+    max_age_updates: 500
+    max_uses_per_pair: 32
+    cache_factual_returns: true
+  learned:
+    total_credit: 3.0
+    temperature: 0.25
+    uniform_floor: 0.1
+    hidden_dim: 64
+    learning_rate: 0.001
+    max_roots_per_episode: 6
+    max_alternatives: 2
+    label_interval_successes: 4
+    max_counterfactual_steps: 20000
+    updates_per_qualified_episode: 4
+    group_capacity: 1000
+    label_capacity: 8000
+    update_only_with_new_labels: false
+guarantee:
+  mode: empirical
+  delta_s_bound: null
+  successful_reference_distance: null
+  strict_margin: 1.0
+output:
+  directory: results/generated/dgre
+  checkpoint_name: checkpoint.pt
+  summary_name: summary.json
+  routes_name: routes.json
+experiment:
+  method: dgre
+  display_method: dgre
+  seed: 906300
+  phase: baseline_matched_map3_01_map7_04_map8_03_seed906300_20260915
+  formal_statistics: false
+  reward_source: native test3
+  plotted_G: own unscaled training and epsilon=0 current-policy return
+  fresh: true
+  variant: gevd_n_coverage01_fusion1
+  training_budget: 25000
+  reference_experiment: GEVD task configuration; see configs/simulation/PARAMETERS.md
+  report_selection: best budget-verified successful path
+policy_retention:
+  enabled: false
+objective_version: first_visit_representative_schur_star_unique_motion_v1
+search:
+  total_simulator_budget: 25000
+  verified_complete_candidates: true
+training_reward:
+  native_environment_reward_used: true
+  formula: delta(S+0.1*K-(c-1)-beta*D)
+learning_rate_schedule:
+  initial: 5.0e-05
+  final: 5.0e-06
+  decay_start_calls: 12500
+  decay_end_calls: 20000
+  basis: total training/search calls at episode update boundary
+epsilon_schedule:
+  start: 1.0
+  end: 0.05
+  decay_end_calls: 15000
+  basis: total training/search calls before each factual action
+  runtime_override: main_runner binds epsilon to SearchLedger.total
+  evaluation_epsilon: 0.0
+reporting:
+  curves:
+  - Training G
+  - Current greedy policy G
+  smoothing_windows:
+  - 49
+  - 99
+  show_success_or_retained_or_schedule_curves: false
+  smoothing_window_episodes: 49
+  eval_interval_episodes: 1
+  include_failed_J: true
+  q16: false

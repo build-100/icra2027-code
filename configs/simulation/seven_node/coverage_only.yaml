@@ -1,0 +1,96 @@
+environment:
+  graph_path: configs/simulation/maps/7node/c7
+  map_width: 2.0
+  robot_count: 2
+  start_nodes:
+  - 0
+  - 4
+  t_max: 3
+reward:
+  alpha: reciprocal_num_regions
+  beta: 0.00022829998760764592
+  rho_v: 0.0
+  rho_g: 0.0
+  pair_factor_weight: median_traversal
+  catalog_counting: robot_edge_and_pair_region_instances
+vdn:
+  seed: 906300
+  device: cpu
+  cpu_threads: 1
+  learning_rate: 5.0e-06
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay_steps: 12000
+output:
+  directory: results/generated/coverage_only
+experiment:
+  method: coverage_only
+  display_method: QMIX-coverage-only+Intra7
+  seed: 906300
+  phase: qmix_coverage_intra7_10seeds
+  formal_statistics: false
+  reward_source: coverage potential plus intra-only log spanning-tree potential
+  plotted_G: training uses the method-specific reward; evaluation uses the common GEVD objective
+    return
+  fresh: true
+objective_version: first_visit_representative_schur_star_unique_motion_v1
+search:
+  total_simulator_budget: 20000
+  verified_complete_candidates: true
+reporting:
+  eval_interval_episodes: 1
+  eval_interval_calls: 0
+  smoothing_window_episodes: 49
+  include_failed_J: true
+baseline_reward_mode: test7
+baseline:
+  hidden_dim: 128
+  central_hidden_dim: 128
+  gradient_clip: 10.0
+  td_reward_scale: 0.1
+  gamma: 1.0
+  initialization: pytorch
+  epsilon_decay_basis: factual_steps
+  epsilon_decay_steps: 12000
+  epsilon_decay_episodes: 1000
+  learning_rate: 5.0e-06
+  batch_size: 64
+  replay_capacity: 20000
+  min_replay: 256
+  updates_per_factual_step: 0.5
+  target_update_interval: 10
+  mixer_width: 32
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+training_reward:
+  native_environment_reward_used: false
+  intra_weight: 7.0
+  formula: delta(K-D/(4B)+7*intra_score)
+  intra_score: alpha * sum_i log tau(unweighted unique own-motion graph_i)
+  excludes_inter_factors: true
+  repeated_edges_count_once: true
+learning_rate_schedule:
+  initial: 5.0e-06
+  final: 5.0e-07
+  decay_start_calls: 10000
+  decay_end_calls: 16000
+  basis: total training/search calls at episode update boundary
+epsilon_schedule:
+  start: 1.0
+  end: 0.05
+  decay_end_calls: 12000
+  basis: total training/search calls before each factual action
+  runtime_override: tr.epsilon / learner.epsilon; legacy factual/episode schedule
+    is not used
+  evaluation_epsilon: 0.0
+late_selection:
+  start_fraction: 0.8
+  metric: own training_return
+  success_required: true
+  strict_improvement: 1.0e-12
+  feedback_into_training: false
+evaluation_reward:
+  formula: delta(S+K-(c-1)-beta*D)
+  rho_v: 1.0
+  rho_g: 1.0
+  feedback_into_training: false

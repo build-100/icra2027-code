@@ -1,0 +1,60 @@
+{
+  "kind": "illustrated_topology_not_calibrated_deployment",
+  "source": "User-supplied manuscript concept and seven-region partition figures",
+  "node_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "undirected_edges": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      6
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      5,
+      6
+    ]
+  ],
+  "illustrated_start_regions": [
+    0,
+    4
+  ],
+  "metric_edge_lengths": null,
+  "metric_coordinates": null,
+  "T_max": null,
+  "beta": null,
+  "note": "Adjacency transcribed from the supplied figure; physical deployment parameters and raw sensor recordings were not available."
+}
