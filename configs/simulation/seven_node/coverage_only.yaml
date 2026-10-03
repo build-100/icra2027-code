@@ -25,7 +25,7 @@ output:
   directory: results/generated/coverage_only
 experiment:
   method: coverage_only
-  display_method: QMIX-coverage-only+Intra7
+  display_method: QCO
   seed: 906300
   phase: qmix_coverage_intra7_10seeds
   formal_statistics: false

@@ -18,7 +18,7 @@ def main():
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--method', required=True, choices=['qmix', 'coma', 'cmre', 'sgre', 'dgre'])
-    parser.add_argument('--map', default='map8', choices=['map3', 'map7', 'map8'])
+    parser.add_argument('--env', default='env3', choices=['env1', 'env2', 'env3'], help='Canonical environment identifier used in Fig. 4 and Table I.')
     parser.add_argument('--robots', type=int, default=3, choices=[2, 3, 4])
     parser.add_argument('--seed', type=int, default=906300)
     parser.add_argument('--device', default='cpu')
@@ -27,10 +27,10 @@ def main():
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     output = (ROOT / (args.output or Path(
-        f'results/generated/{args.map}_N{args.robots}_{args.method}_{args.seed}'))).resolve()
+        f'results/generated/{args.env}_N{args.robots}_{args.method}_{args.seed}'))).resolve()
     if not output.is_relative_to(ROOT):
         parser.error('Output must remain inside this repository.')
-    config_path = ROOT / f'configs/simulation/comparison/{args.map}/N{args.robots}/{args.method}.yaml'
+    config_path = ROOT / f'configs/simulation/comparison/{args.env}/N{args.robots}/{args.method}.yaml'
     config = yaml.safe_load(config_path.read_text(encoding='utf-8'))
     config['environment']['graph_path'] = str(ROOT / config['environment']['graph_path'])
     config['vdn'].update(seed=args.seed, device=args.device)
@@ -55,7 +55,7 @@ def main():
         output.mkdir(parents=True)
         effective_config = output / 'config.yaml'
         effective_config.write_text(yaml.safe_dump(config, sort_keys=False), encoding='utf-8')
-        runner.run_one({'method': args.method, 'map': args.map, 'N': args.robots,
+        runner.run_one({'method': args.method, 'map': args.env, 'N': args.robots,
             'seed': args.seed, 'config': str(effective_config), 'directory': str(output)})
         return
 

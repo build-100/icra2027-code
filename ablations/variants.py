@@ -14,9 +14,9 @@ from ablations.raw_structure import raw_structural_score
 from gevd.training.base import load_torch_checkpoint, resolve_inside_project
 
 LABELS = {
-    'no_vdn': 'GEVD w/o Collective Value Decomposition',
-    'no_gauge': 'GEVD w/o Explicit Gauge-Nullity Term',
-    'raw_structure': 'GEVD w/o Representative-Pose Marginalization',
+    'no_vdn': 'GEVD w/o Value Decomposition',
+    'no_gauge': 'GEVD w/o Gauge-Nullity Term',
+    'raw_structure': 'GEVD w/o Representative-Pose',
 }
 
 

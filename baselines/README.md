@@ -9,16 +9,16 @@ they are not verbatim executions of the upstream ROS systems.
 | --- | --- |
 | `run.py --method qmix` | Independent local MLP with a monotonic mixer; Adam, learning rate `5e-5` |
 | `run.py --method coma` | Independent actor and counterfactual critic; RMSprop, learning rate `5e-4` |
-| `run.py --method cmre` | Coordinated coverage-route planner |
-| `run.py --method sgre` | CGE-style sequential greedy loop insertion |
-| `run.py --method dgre` | Ordered randomized double-greedy loop insertion, candidate cap 32 |
-| `run_coverage.py --method coverage_only` | QCO: seven-node QMIX with coverage, travel cost and intra-robot information |
-| `run_coverage.py --method coverage_first` | QCF: the QCO objective plus a `0.5` success bonus |
+| `run.py --method cmre` | Coordinated multi-robot exploration with coverage-route construction |
+| `run.py --method sgre` | Sequential greedy loop selection |
+| `run.py --method dgre` | Ordered double-greedy loop selection, candidate cap 32 |
+| `run_coverage.py --method coverage_only` | QMIX coverage-only (QCO) with coverage, travel cost and intra-robot information |
+| `run_coverage.py --method coverage_first` | QMIX coverage-first (QCF): the QCO objective plus a `0.5` success bonus |
 
 From the repository root, validate the configuration without simulator calls:
 
 ```bash
-python baselines/run.py --method qmix --map map8 --robots 3
+python baselines/run.py --method qmix --env env3 --robots 3
 python baselines/run_coverage.py --method coverage_only
 ```
 

@@ -8,7 +8,7 @@ physical ROS recordings. Generated outputs stay under the local `results/`
 directory. The distinctions below concern the experiment evidence available when
 the release was prepared; they are not new training results.
 
-## Seven-node illustration
+## Performance in Simple Use Case
 
 Saved records identify ten seeds each for GEVD, coverage-only, and coverage-first.
 The GEVD analysis interval ends at 10,000 budgeted simulator calls; the two
@@ -18,11 +18,11 @@ plotting input has not been established. The supplied figure is displayed as a
 manuscript illustration, not as a newly reproduced learning curve. No confidence
 intervals or multi-seed statistics have been inferred from that image.
 
-## Main comparison
+## Comparative Simulation in Canonical Environments
 
 The 54 displayed G/S/success entries in Table I were traced to saved selected
 routes at the manuscript's three-decimal precision. Their available sources are
-single runs, not established ten-run means. Two GEVD-labeled entries use GEVD: `map7/N2`, seed 906300, and `map8/N3`, seed 906305. The other seven
+single runs, not established ten-run means. Two GEVD-labeled entries use GEVD: `env2/N2`, seed 906300, and `env3/N3`, seed 906305. The other seven
 GEVD-labeled task entries use the older primary-only backbone with the auxiliary
 Q-prime branch disabled. The five comparison baselines use seed 906300.
 
@@ -31,9 +31,9 @@ they do not relabel older backbone results or establish complete nine-task
 reproduction. An interrupted GEVD nine-task batch was cancelled and is not
 presented as a completed experiment.
 
-## Component ablations
+## GEVD Ablation Study
 
-The five Table II entries match seed 906305 on `map8/N3`, rather than an aggregate
+The five Table II entries match seed 906305 on `env3/N3`, rather than an aggregate
 across five seeds. Their selection uses a verified successful route retained
 within budget, or a complete saved failure route when no such success exists.
 This differs from reporting the final greedy policy. For example, the GEVD

@@ -20,7 +20,7 @@ def main(argv=None):
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
     output = args.output or Path(f"results/generated/{args.variant}_seed{args.seed}")
-    cfg = load(f"configs/simulation/ablation/map8_N3/{args.variant}.yaml", args.device, args.seed, output)
+    cfg = load(f"configs/simulation/ablation/env3_N3/{args.variant}.yaml", args.device, args.seed, output)
     from gevd.training.search import BudgetedSearchTrainer
     from ablations.variants import GEVDAblationTrainer
 

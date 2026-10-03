@@ -18,7 +18,7 @@ from gevd.training.retrospective_utility import collect_auxiliary_episode
 
 
 def config(tmp_path, variant):
-    cfg = yaml.safe_load((ROOT/'configs/simulation/comparison/map8/N3/gevd.yaml').read_text())
+    cfg = yaml.safe_load((ROOT/'configs/simulation/comparison/env3/N3/gevd.yaml').read_text())
     cfg['full_gevd_ablation'] = variant
     cfg['vdn'].update(device='cpu', hidden_dim=16, batch_size=2, min_factual_replay=2)
     cfg['retrospective_utility']['batch_size'] = 2

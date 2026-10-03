@@ -14,22 +14,26 @@ decomposition. The diagram is supplied with the manuscript.*
 
 ## Overview
 
-- **Gauge-aware objective.** Representative-pose structural scoring separates
-  local mapping quality from the benefit of merging independent robot frames.
-- **Shared value decomposition.** A graph-based learner optimizes the joint
-  exploration objective with a shared primary value function.
-- **Retrospective utility.** An independent, bounded auxiliary branch assigns
-  credit associated with delayed inter-robot closure events. Execution combines
-  the primary and auxiliary utilities.
+- **Gauge-Aware Structural Modeling.** Local Mapping Evaluation and
+  Gauge-Nullity Accounting define the Gauge-Aware Task Objective, balancing
+  structural quality, coverage, fusion, and travel cost.
+- **Event-Aligned Value Decomposition.** Collective Value Decomposition learns
+  the team objective. Retrospective Utility Augmentation associates delayed
+  fusion feedback with earlier robot visits to guide decentralized decisions.
+
+[Manuscript terminology](docs/terminology.md) records the section names, environment
+identifiers, and ablation labels used throughout this repository.
 
 The repository includes the GEVD simulator and learner, five comparison
 baselines, two seven-node coverage baselines, four component ablations, and the
 corresponding configurations. See [experiments and figures](docs/experiments.md)
 for the simulation environments and physical experiment illustrations.
 
-## Real-world demonstrations
+<a id="real-world-demonstrations"></a>
 
-### Small-scale experiment: coverage-only baseline and GEVD
+## Experiments with a Real Multi-Robot System
+
+### Constructed environment: coverage-only baseline and GEVD
 
 Two robots explore the same partitioned arena. Each clip pairs an overhead view
 of the robots with the evolving map, as shown in the accompanying demo presentation.
@@ -39,7 +43,7 @@ of the robots with the evolving map, as shown in the accompanying demo presentat
 | [![Coverage-only baseline in the small physical arena](docs/assets/demos/small_coverage_only.gif)](docs/assets/demos/small_coverage_only.mp4) | [![GEVD in the small physical arena](docs/assets/demos/small_gevd.gif)](docs/assets/demos/small_gevd.mp4) |
 | [Full video (11.9 s)](docs/assets/demos/small_coverage_only.mp4) | [Full video (13.1 s)](docs/assets/demos/small_gevd.mp4) |
 
-### Large-scale experiment: GEVD in an office environment
+### Supplementary office experiment
 
 The map and robot trajectories appear on the left, alongside two onboard camera
 views on the right.
@@ -87,10 +91,10 @@ Start a fresh seven-node GEVD run:
 python main.py --config configs/simulation/seven_node/gevd.yaml --run --output results/generated/seven_node_gevd
 ```
 
-Run GEVD with three robots in environment 3 (`map8`):
+Run GEVD with three robots in Env3 (`env3`):
 
 ```bash
-python main.py --config configs/simulation/comparison/map8/N3/gevd.yaml --run --seed 906305 --output results/generated/map8_N3_gevd
+python main.py --config configs/simulation/comparison/env3/N3/gevd.yaml --run --seed 906305 --output results/generated/env3_N3_gevd
 ```
 
 Commands without `--run` perform preflight only. Existing output directories are
@@ -101,10 +105,10 @@ options. The training budget counts simulator calls; it is not an episode count.
 
 | Experiment | Configuration directory | Scope |
 |---|---|---|
-| Seven-node illustration | `configs/simulation/seven_node` | GEVD, coverage-only, coverage-first |
-| Main comparison | `configs/simulation/comparison` | `map3`, `map7`, `map8`; 2, 3, or 4 robots |
-| Component ablations | `configs/simulation/ablation` | `map8`, 3 robots |
-| Physical experiment | `configs/real` | Available seven-region metadata and availability status |
+| Performance in Simple Use Case (V-A) | `configs/simulation/seven_node` | GEVD, coverage-only, coverage-first |
+| Comparative Simulation in Canonical Environments (V-B) | `configs/simulation/comparison` | `env1`, `env2`, `env3`; 2, 3, or 4 robots |
+| GEVD Ablation Study (V-C) | `configs/simulation/ablation` | `env3`, 3 robots |
+| Experiments with a Real Multi-Robot System (VI) | `configs/real` | Available seven-region metadata and availability status |
 
 The three simulation environments have 36, 23, and 39 regions, respectively.
 Start regions, horizons, reward weights, and learning settings are specified in
@@ -114,8 +118,8 @@ how the comparison horizons and distance penalties were selected.
 ## Baselines and ablations
 
 ```bash
-python baselines/run.py --method qmix --map map8 --robots 3
-python baselines/run.py --method dgre --map map8 --robots 3 --run
+python baselines/run.py --method qmix --env env3 --robots 3
+python baselines/run.py --method dgre --env env3 --robots 3 --run
 python baselines/run_coverage.py --method coverage_only
 python baselines/run_coverage.py --method coverage_first --run
 python ablations/run.py --variant no_retrospective
@@ -124,12 +128,12 @@ python ablations/run.py --variant no_gauge --run
 
 | Comparison method | Implementation |
 |---|---|
-| CMRE | Coordinated coverage-route planning adapted to the common task |
-| sGre | Sequential greedy loop insertion |
-| dGre | Ordered double-greedy planning adapted to the common task |
+| CMRE | Coordinated multi-robot exploration with coverage-route construction |
+| sGre | Sequential greedy loop selection |
+| dGre | Ordered double-greedy loop selection |
 | QMIX | An isolated QMIX learner with a local MLP encoder |
 | COMA | An isolated COMA actor-critic learner |
-| QCO / QCF | Seven-node coverage-only / coverage-first learners |
+| QCO / QCF | QMIX coverage-only / QMIX coverage-first |
 
 The four GEVD ablations are `no_retrospective`, `no_gauge`, `no_vdn`, and
 `raw_structure`. Their evaluation environment and common score remain fixed.

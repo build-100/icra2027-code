@@ -1,6 +1,6 @@
 [
   {
-    "map": "map3",
+    "map": "env1",
     "N": 2,
     "starts": [
       8,
@@ -12,7 +12,7 @@
     "training_rho_g": 1
   },
   {
-    "map": "map3",
+    "map": "env1",
     "N": 3,
     "starts": [
       3,
@@ -25,7 +25,7 @@
     "training_rho_g": 1
   },
   {
-    "map": "map3",
+    "map": "env1",
     "N": 4,
     "starts": [
       3,
@@ -39,7 +39,7 @@
     "training_rho_g": 1
   },
   {
-    "map": "map7",
+    "map": "env2",
     "N": 2,
     "starts": [
       0,
@@ -51,7 +51,7 @@
     "training_rho_g": 1
   },
   {
-    "map": "map7",
+    "map": "env2",
     "N": 3,
     "starts": [
       0,
@@ -64,7 +64,7 @@
     "training_rho_g": 1
   },
   {
-    "map": "map7",
+    "map": "env2",
     "N": 4,
     "starts": [
       0,
@@ -78,7 +78,7 @@
     "training_rho_g": 1
   },
   {
-    "map": "map8",
+    "map": "env3",
     "N": 2,
     "starts": [
       9,
@@ -90,7 +90,7 @@
     "training_rho_g": 1
   },
   {
-    "map": "map8",
+    "map": "env3",
     "N": 3,
     "starts": [
       9,
@@ -103,7 +103,7 @@
     "training_rho_g": 1
   },
   {
-    "map": "map8",
+    "map": "env3",
     "N": 4,
     "starts": [
       9,

@@ -1,10 +1,10 @@
-# Real-world demonstrations
+# Experiments with a Real Multi-Robot System
 
-The accompanying GEVD demo presentation contains a controlled small-scale
-comparison and a larger office experiment. The clips below come directly from
+Section VI reports a two-robot experiment in a constructed environment. The
+accompanying presentation also supplies a supplementary office experiment. The clips below come directly from
 its embedded videos. Click a GIF or the video link to open the full MP4.
 
-## Small-scale physical experiment
+## Constructed environment
 
 Two mobile robots explore the partitioned arena. The upper view shows the
 physical robots, and the lower view shows the evolving map. The presentation
@@ -17,9 +17,9 @@ labels the left clip **Coverage-only baseline** and the right clip **GEVD**.
 
 Both clips retain their own source timing and loop independently. Their different
 lengths do not establish a runtime comparison. The [physical setup and structural-score
-illustrations](experiments.md#small-scale-physical-setup) provide context for this arena.
+illustrations](experiments.md#real-world-experimental-setup) provide context for this arena.
 
-## Large-scale physical experiment
+## Supplementary office experiment
 
 GEVD explores the office environment shown below. The video combines the evolving
 map and two colored robot trajectories on the left with two onboard camera views
@@ -41,9 +41,9 @@ calibrated edge costs, or the robot deployment configuration.*
 
 | Demonstration | Presentation source | Full clip | MP4 resolution | GIF preview |
 |---|---|---:|---|---|
-| Small-scale coverage-only baseline | Slide 7, left video | 11.87 s | 1080 x 1080, 30 fps | 420 x 420, 8 fps |
-| Small-scale GEVD | Slide 7, right video | 13.10 s | 1080 x 1080, 30 fps | 420 x 420, 8 fps |
-| Large-scale GEVD | Slide 9 | 43.57 s | 2160 x 1080, 30 fps | 720 x 360, 5 fps |
+| Constructed environment: coverage-only baseline | Slide 7, left video | 11.87 s | 1080 x 1080, 30 fps | 420 x 420, 8 fps |
+| Constructed environment: GEVD | Slide 7, right video | 13.10 s | 1080 x 1080, 30 fps | 420 x 420, 8 fps |
+| Office environment: GEVD | Slide 9 | 43.57 s | 2160 x 1080, 30 fps | 720 x 360, 5 fps |
 
 The office topology is the original embedded image from slide 6. Each MP4 retains
 the complete original video stream, with audio and container metadata removed.

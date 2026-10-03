@@ -25,7 +25,7 @@ from gevd.training.replay import MixedReplaySampler, TransitionReplayBuffer
 
 
 def make_graph(labels=(10, 30, 70, 90), edges=None):
-    """Create a weighted in-memory graph; no map3/map4/map7 dependency."""
+    """Create a weighted in-memory graph; no external environment-file dependency."""
 
     if edges is None:
         edges = ((10, 30), (30, 70), (70, 90))

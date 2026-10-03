@@ -10,9 +10,9 @@ substitute.
 |---|---|
 | `method_overview.png` | GEVD structural modeling and value decomposition pipeline |
 | `multi_robot_concept.png` | Conceptual two-robot exploration and inter-robot closure |
-| `environment_map3.png` | Simulation environment 1 / map3 |
-| `environment_map7.png` | Simulation environment 2 / map7 |
-| `environment_map8.png` | Simulation environment 3 / map8 |
+| `environment_env1.png` | Simulation Env1 / env1 |
+| `environment_env2.png` | Simulation Env2 / env2 |
+| `environment_env3.png` | Simulation Env3 / env3 |
 | `seven_node_manuscript.png` | Seven-node routes and the manuscript Episodes-axis curve |
 | `physical_experiment.jpg` | Photograph of the two-robot physical arena |
 | `robot_platform.png` | Photograph of the robot platform |

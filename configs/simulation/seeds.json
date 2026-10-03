@@ -13,7 +13,7 @@
   ],
   "table_I": {
     "default": 906300,
-    "map8_N3_GEVD": 906305
+    "env3_N3_GEVD": 906305
   },
   "table_II": 906305,
   "available_extra_ablation_seeds_not_table_II": [

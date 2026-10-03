@@ -21,7 +21,7 @@ from gevd.training.retrospective_utility import (ABSOLUTE_QPRIME_RATIO, bounded_
 
 @pytest.fixture
 def cfg(tmp_path):
-    config = yaml.safe_load((ROOT / 'configs/simulation/comparison/map8/N3/gevd.yaml').read_text(encoding='utf-8'))
+    config = yaml.safe_load((ROOT / 'configs/simulation/comparison/env3/N3/gevd.yaml').read_text(encoding='utf-8'))
     config['vdn'].update(device='cpu', hidden_dim=16, batch_size=2, min_factual_replay=2,
                          target_update_interval=2, cpu_threads=1)
     config['retrospective_utility']['batch_size'] = 2

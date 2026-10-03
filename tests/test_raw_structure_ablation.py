@@ -11,7 +11,7 @@ from gevd.training.search import BudgetedSearchTrainer, SearchLedger
 from gevd.evaluation.replay import replay_metrics
 
 def config(tmp_path):
-    cfg=yaml.safe_load((ROOT/'configs/simulation/ablation/map8_N3/no_retrospective.yaml').read_text(encoding='utf-8'))
+    cfg=yaml.safe_load((ROOT/'configs/simulation/ablation/env3_N3/no_retrospective.yaml').read_text(encoding='utf-8'))
     cfg['training_structure']='componentwise_raw'
     cfg['vdn'].update(device='cpu',hidden_dim=16,batch_size=2,min_factual_replay=2)
     cfg['output']['directory']=str(tmp_path)
@@ -68,7 +68,7 @@ def test_common_scores_and_checkpoint_roundtrip(tmp_path,monkeypatch):
 
 def test_main_configuration_promoted_to_full_gevd(tmp_path):
     from gevd.training.gevd import GEVDTrainer
-    cfg=yaml.safe_load((ROOT/'configs/simulation/comparison/map8/N3/gevd.yaml').read_text(encoding='utf-8'))
+    cfg=yaml.safe_load((ROOT/'configs/simulation/comparison/env3/N3/gevd.yaml').read_text(encoding='utf-8'))
     cfg['vdn'].update(device='cpu',hidden_dim=16)
     cfg['output']['directory']=str(tmp_path)
     tr=GEVDTrainer.from_config(cfg)

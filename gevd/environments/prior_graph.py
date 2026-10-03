@@ -291,7 +291,7 @@ class PriorGraph:
             scale = 1
         else:
             scale = actual_width / width_in_drawio
-        # print(f"Drawio scale: {scale}")  # 0.1028 for map3
+        # print(f"Drawio scale: {scale}")  # 0.1028 for env1
         
         center_x_drawio, center_y_drawio = 0.5 * (left_node[0] + right_node[0]), 0.5 * (left_node[1] + mid_node[1])
         # print([center_x_drawio, center_y_drawio])

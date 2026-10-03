@@ -8,8 +8,9 @@ T_max and beta. Unknown fields remain null in `paper7_external/status.json`.
 
 Physical ROS recordings remain in the authors' Ubuntu system and are not part
 of this release. No robot deployment or sensor-level replay is claimed here.
-The later 58-node office environment belongs to a different experiment and
-is excluded from this GEVD release.
+The separate 58-region office experiment appears as a supplementary
+demonstration in `docs/demos.md`; its video and topology image do not supply
+a calibrated robot deployment configuration.
 
 `illustrated_topology.json` records the nine drawn adjacencies and starting
 regions [0, 4] as qualitative figure evidence. Its coordinates, metric edge

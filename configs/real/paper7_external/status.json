@@ -9,7 +9,7 @@
   "T_max": null,
   "beta": null,
   "bag_location": "User-managed Ubuntu; outside this task scope",
-  "note": "The supplied figures establish qualitative adjacency and illustrated starts. Calibrated deployment parameters are unavailable; later office experiments are excluded.",
+  "note": "The supplied figures establish qualitative adjacency and illustrated starts. Calibrated deployment parameters are unavailable. The separate office experiment is documented as a supplementary demonstration, not as this configuration.",
   "illustrated_topology_file": "configs/real/paper7_external/illustrated_topology.json",
   "illustrated_start_regions": [
     0,

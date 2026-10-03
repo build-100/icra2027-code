@@ -25,7 +25,7 @@ output:
   directory: results/generated/coverage_first
 experiment:
   method: coverage_first
-  display_method: QMIX-coverage-first+Intra7
+  display_method: QCF
   seed: 906300
   phase: qmix_coverage_intra7_10seeds
   formal_statistics: false

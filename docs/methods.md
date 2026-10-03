@@ -1,51 +1,64 @@
-# Methods and common evaluation
+# GEVD Methods and Common Evaluation
 
-## GEVD
+## Gauge-Aware Structural Modeling
 
-GEVD uses a shared graph-based value learner with Double DQN targets and a value
-decomposition objective. An independent retrospective utility branch Q-prime
-augments action selection. Its magnitude is capped at 0.1 times the magnitude of
-the corresponding primary utility, and its execution multiplier is 0.1.
-
-The common task score is
+Following Section IV-A, Local Mapping Evaluation computes the representative-pose
+structural score within each connected component. Gauge-Nullity Accounting
+records unresolved relative frames through the component count. The
+Gauge-Aware Task Objective combines structure, coverage, fusion, and travel cost:
 
 ```text
-G = (S_T - S_0) + rho_v (K_T - N) + rho_g (N - c_T) - beta D.
+G(p) = S(p) + rho_V [n(p) - N] + rho_g [N - c(p)] - beta D(p).
 ```
 
-Here S is the structural score, K is the number of covered regions, N is the
-number of robots, c is the number of unregistered components, and D is total
-travel distance. Region coverage and component fusion are separate contributions.
-The shared physical success test is retained across learning-method ablations.
+This is Equation (9): S is the structural score, n is the number of visited
+regions, N is the number of robots, c is the number of connected components,
+and D is cumulative team travel. The initial isolated representatives give
+S_0 = 0. Full coverage and terminal fusion require n(p) = |V| and c(p) = 1
+within T_max. Incremental rewards follow Equation (11).
 
-## Comparison baselines
+## Event-Aligned Value Decomposition
 
-| Method | Task implementation |
+Section IV-B combines **Collective Value Decomposition**, Q_tot = sum_i Q_i,
+with **Retrospective Utility Augmentation**, whose auxiliary utilities Q'_i learn
+from delayed fusion feedback associated with earlier visits. Decentralized
+selection uses Q_i + lambda Q'_i as in Equation (14).
+
+The implementation uses shared graph encoders, Double DQN targets, separate
+primary and auxiliary parameters, an auxiliary amplitude bound of 0.1 |Q_i|,
+and an execution multiplier lambda = 0.1. See [parameters](parameters.md) for
+implementation settings beyond the manuscript's high-level definitions.
+
+## Comparison Baselines
+
+| Method | Manuscript terminology and released implementation |
 |---|---|
-| CMRE | Adapted coordinated coverage-route planner |
-| sGre | CGE-style sequential greedy loop insertion |
-| dGre | Adapted ordered double-greedy planner, candidate cap 32 |
-| QMIX | Isolated QMIX with local MLP, Adam learning rate 5e-5 |
-| COMA | Isolated COMA with actor/critic RMSprop learning rate 5e-4 |
-| QCO | Seven-node QMIX using coverage, distance, and intra-component information; information coefficient 7 |
-| QCF | QCO with an additional 0.5 success bonus |
+| CMRE | Coordinated multi-robot exploration; constructs coverage routes |
+| sGre | Sequential greedy loop selection |
+| dGre | Ordered double-greedy loop selection; candidate cap 32 |
+| QMIX | QMIX with local MLP utilities; Adam learning rate 5e-5 |
+| COMA | Counterfactual multi-agent policy gradients; actor/critic RMSprop learning rate 5e-4 |
+| QCO | QMIX coverage-only; coverage, travel cost, and intra-robot information with coefficient 7 |
+| QCF | QMIX coverage-first; QCO with an additional 0.5 success bonus |
 
-QMIX and COMA use their own learners and optimizer settings. QCO and QCF have
-different training rewards from GEVD; comparison uses the common evaluation
-score rather than substituting each learner's training return for G. Planning
-baselines are adaptations to the graph task, not full upstream navigation stacks.
+QCO and QCF are the QMIX variants in Section V-A. CMRE, sGre, dGre, QMIX,
+and COMA are the baselines in Section V-B. Planning methods are adapted to the
+common graph task. Each MARL baseline retains its own network and optimizer.
+Evaluation uses the common mapping return G rather than each baseline's training
+return. The physical coverage-only baseline in Section VI is labeled separately.
 
-## GEVD component ablations
+## GEVD Ablation Study
 
-| Variant | Change from GEVD |
-|---|---|
-| `no_retrospective` | Disable the independent auxiliary Q-prime branch |
-| `no_gauge` | Remove the explicit gauge reward from primary factual TD replay |
-| `no_vdn` | Use parameter-shared independent TD with the full team reward per local target |
-| `raw_structure` | Use full-pose component structural increments in primary replay without representative marginalization |
+The labels below follow Table II; configuration identifiers select each variant.
 
-The last three variants retain Q-prime. All four retain the common simulator,
-evaluation score, and success definition. A training-reward ablation does not
-remove the physical possibility of fusion. The supplied ablation configurations
-use `map8/N3`; see [parameters](parameters.md) and
-[reproducibility notes](reproducibility.md) for experiment scope.
+| Table II label | Configuration identifier | Component removed |
+|---|---|---|
+| w/o Retrospective Utility | `no_retrospective` | Retrospective Utility Augmentation |
+| w/o Gauge-Nullity Term | `no_gauge` | Explicit gauge-nullity reward term in primary TD learning |
+| w/o Value Decomposition | `no_vdn` | Collective Value Decomposition; use shared independent TD with team reward |
+| w/o Representative-Pose | `raw_structure` | Representative-pose evaluation; use componentwise raw structural increments |
+
+All variants retain the common simulator, evaluation objective, and success
+definition. The last three retain the auxiliary utilities. The configurations
+use Env3 with N = 3 under `configs/simulation/ablation/env3_N3`. See
+[reproducibility notes](reproducibility.md) for the available experiment evidence.

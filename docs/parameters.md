@@ -5,19 +5,19 @@ default device. The parameter tables below define executable simulation tasks;
 they do not establish that every manuscript table entry was produced by the
 current GEVD implementation.
 
-## Comparison tasks
+## Comparative Simulation in Canonical Environments
 
-| Paper environment | Map | Robots | Start regions | T_max | beta | rho_v | rho_g |
+| Manuscript environment | Identifier | Robots | Start regions | T_max | beta | rho_v | rho_g |
 |---|---|---:|---|---:|---:|---:|---:|
-| Environment 1 | map3 | 2 | [8, 29] | 23 | 0.00098840812174339713 | 0.1 | 1 |
-| Environment 1 | map3 | 3 | [3, 8, 29] | 17 | 0.00048883587743437924 | 0.1 | 1 |
-| Environment 1 | map3 | 4 | [3, 8, 29, 34] | 13 | 0.00036878842250259708 | 0.1 | 1 |
-| Environment 2 | map7 | 2 | [0, 16] | 14 | 0.00065700197705703916 | 0.4 | 1 |
-| Environment 2 | map7 | 3 | [0, 11, 16] | 11 | 0.00035512450575036835 | 0.4 | 1 |
-| Environment 2 | map7 | 4 | [0, 11, 16, 21] | 9 | 0.00068233117855083579 | 0.4 | 1 |
-| Environment 3 | map8 | 2 | [9, 30] | 35 | 0.00035396566065758791 | 0.3 | 1 |
-| Environment 3 | map8 | 3 | [9, 12, 30] | 23 | 0.00022829998760764592 | 0.3 | 1 |
-| Environment 3 | map8 | 4 | [9, 12, 30, 3] | 18 | 0.00022600981996761401 | 0.3 | 1 |
+| Env1 | env1 | 2 | [8, 29] | 23 | 0.00098840812174339713 | 0.1 | 1 |
+| Env1 | env1 | 3 | [3, 8, 29] | 17 | 0.00048883587743437924 | 0.1 | 1 |
+| Env1 | env1 | 4 | [3, 8, 29, 34] | 13 | 0.00036878842250259708 | 0.1 | 1 |
+| Env2 | env2 | 2 | [0, 16] | 14 | 0.00065700197705703916 | 0.4 | 1 |
+| Env2 | env2 | 3 | [0, 11, 16] | 11 | 0.00035512450575036835 | 0.4 | 1 |
+| Env2 | env2 | 4 | [0, 11, 16, 21] | 9 | 0.00068233117855083579 | 0.4 | 1 |
+| Env3 | env3 | 2 | [9, 30] | 35 | 0.00035396566065758791 | 0.3 | 1 |
+| Env3 | env3 | 3 | [9, 12, 30] | 23 | 0.00022829998760764592 | 0.3 | 1 |
+| Env3 | env3 | 4 | [9, 12, 30, 3] | 18 | 0.00022600981996761401 | 0.3 | 1 |
 
 Map widths, edge geometry, and all remaining settings are recorded in the graph
 assets and the task YAML files. Alpha is the reciprocal of the region count.
@@ -57,7 +57,7 @@ With no positive candidate, this rule does not yield a calibrated beta.
 The nine calibration records retain the reference routes, detours, quantiles,
 fallback flags, and final task parameters under `configs/simulation/calibration`.
 
-## Seven-node illustration
+## Performance in Simple Use Case
 
 The graph has seven regions and nine unit-length edges. Two robots start at
 regions [0, 4], with T_max = 3 and rho_v = rho_g = 1.
@@ -95,7 +95,7 @@ bonus of 0.5 for QCF. QMIX and COMA retain their separate optimizer settings.
 ## Evaluation and budget accounting
 
 ```text
-G = (S_T - S_0) + rho_v * (K_T - N) + rho_g * (N - c_T) - beta * D.
+G(p) = S(p) + rho_V * (n(p) - N) + rho_g * (N - c(p)) - beta * D(p).
 ```
 
 Training return, common evaluation G, structural score S, and success are separate

@@ -11,23 +11,7 @@ vector PDF. They illustrate the study and are not newly generated measurements.
 *Region-level planning couples local exploration with opportunities for inter-robot
 closure. The two panels illustrate different route choices in the same setting.*
 
-## Simulation environments
-
-| Manuscript environment | Code map | Regions | Robot counts | Horizons for 2 / 3 / 4 robots |
-|---|---|---:|---|---|
-| Environment 1 | `map3` | 36 | 2, 3, 4 | 23 / 17 / 13 |
-| Environment 2 | `map7` | 23 | 2, 3, 4 | 14 / 11 / 9 |
-| Environment 3 | `map8` | 39 | 2, 3, 4 | 35 / 23 / 18 |
-
-| Environment 1 (`map3`) | Environment 2 (`map7`) | Environment 3 (`map8`) |
-|---|---|---|
-| ![Environment 1](assets/environment_map3.png) | ![Environment 2](assets/environment_map7.png) | ![Environment 3](assets/environment_map8.png) |
-
-*Green markers denote graph regions and the overlaid connections define the
-planning structure. The YAML files and graph assets specify the executable tasks;
-the raster figures are illustrations.*
-
-### Seven-node example
+## Performance in Simple Use Case
 
 ![Seven-node routes and manuscript learning-curve illustration](assets/seven_node_manuscript.png)
 
@@ -41,29 +25,45 @@ The seven-node task uses two robots starting at regions 0 and 4, nine unit-lengt
 edges, and a horizon of three joint steps. See [parameters](parameters.md) for the
 fixed beta and the learner budgets.
 
-## Single-run ablation example
+## Comparative Simulation in Canonical Environments
 
-The following compact display corresponds to the saved routes behind manuscript
-Table II on map8 with three robots (seed 906305). It reports a retained verified
+| Manuscript environment | Identifier | Regions | Robot counts | Horizons for 2 / 3 / 4 robots |
+|---|---|---:|---|---|
+| Env1 | `env1` | 36 | 2, 3, 4 | 23 / 17 / 13 |
+| Env2 | `env2` | 23 | 2, 3, 4 | 14 / 11 / 9 |
+| Env3 | `env3` | 39 | 2, 3, 4 | 35 / 23 / 18 |
+
+| Env1 (`env1`) | Env2 (`env2`) | Env3 (`env3`) |
+|---|---|---|
+| ![Env1](assets/environment_env1.png) | ![Env2](assets/environment_env2.png) | ![Env3](assets/environment_env3.png) |
+
+*Green markers denote graph regions and the overlaid connections define the
+planning structure. The YAML files and graph assets specify the executable tasks;
+the raster figures are illustrations.*
+
+## GEVD Ablation Study
+
+The following table corresponds to the saved routes behind manuscript
+Table II on Env3 with three robots (seed 906305). It reports a retained verified
 successful route, or a saved complete failure when no success was retained.
 These are not multi-seed means or final-policy scores. See the
 [reproducibility notes](reproducibility.md) for the selection rule.
 
-| Method | G | S | Complete fused map |
+| Method | Evaluation score (G) | Structural score (S) | Coverage & fusion |
 |---|---:|---:|---|
-| GEVD | 12.865 | 0.292 | Yes |
-| Without retrospective utility | 12.601 | 0.317 | No |
-| Without value decomposition | 12.859 | 0.286 | Yes |
-| Without fusion reward | 12.807 | 0.236 | Yes |
-| Raw structural score | 12.561 | 0.291 | No |
+| GEVD | 12.865 | 0.292 | (39/39, c = 1) |
+| w/o Retrospective Utility | 12.601 | 0.317 | (38/39, c = 1) |
+| w/o Gauge-Nullity Term | 12.807 | 0.236 | (39/39, c = 1) |
+| w/o Value Decomposition | 12.859 | 0.286 | (39/39, c = 1) |
+| w/o Representative-Pose | 12.561 | 0.291 | (38/39, c = 1) |
 
-## Physical demonstration videos
+## Experiments with a Real Multi-Robot System
 
-The [demo gallery](demos.md) includes GIF previews and full MP4s for the small
-physical comparison and the larger office experiment. The latter has a separate
-58-region topology supplied with the demo presentation.
+The [demonstration videos](demos.md) show the constructed-environment comparison
+and the supplementary office experiment. The latter has a separate 58-region
+topology supplied with the presentation.
 
-## Small-scale physical setup
+### Real-world experimental setup
 
 | Experiment arena | Robot platform |
 |---|---|
@@ -80,14 +80,14 @@ on the upper row, with regions 6, 5, and 4 below. The depicted starting regions
 are 0 and 4. The image does not provide an executable metric topology or determine
 T_max, beta, or map scale; unspecified configuration fields remain unspecified.*
 
-### Structural-score comparison
+### Comparison of real-world mapping results
 
-| Separate exploration | Coordinated exploration |
+| Coverage-only baseline | GEVD |
 |---|---|
 | ![Separate routes, annotated structural score minus 0.100](assets/separate_routes.png) | ![Coordinated routes, annotated structural score 0.157](assets/coordinated_routes.png) |
 
-*The supplied manuscript illustrations annotate S = -0.100 for the separate
-routes and S = 0.157 for the coordinated routes. These are image annotations,
+*The supplied manuscript illustrations annotate S = -0.100 for the coverage-only
+baseline and S = 0.157 for GEVD. These are image annotations,
 not scores recomputed from released sensor data. Physical recordings are held
 separately and have not been replayed as part of this release.*
 
