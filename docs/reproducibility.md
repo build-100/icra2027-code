@@ -1,7 +1,8 @@
 # Reproducibility and data availability
 
 This repository provides an executable GEVD implementation, comparison and
-ablation code, task configurations, and author-supplied manuscript illustrations.
+ablation code, task configurations, author-supplied manuscript illustrations, and
+curated physical demonstration videos.
 It does not distribute experiment logs, learned checkpoints, machine-readable result records, or
 physical ROS recordings. Generated outputs stay under the local `results/`
 directory. The distinctions below concern the experiment evidence available when
@@ -49,11 +50,16 @@ or a calibrated machine-readable deployment graph. A figure-level, unscaled
 adjacency transcription is included in `configs/real/paper7_external/illustrated_topology.json`. Unavailable deployment fields remain
 explicitly unspecified in the configuration metadata.
 
+The [demo gallery](demos.md) provides the presentation's small-scale baseline
+and GEVD videos and its larger office demonstration, together with the supplied
+58-region office topology image. These presentation clips are distinct from raw
+sensor recordings. The office experiment is a different environment and does
+not fill missing seven-region parameters. Clip timing does not establish elapsed
+experiment time or a runtime comparison.
+
 The physical ROS recordings are held separately on Ubuntu and are not part of
-this release. A later 58-node office experiment is a different environment and
-must not be used to fill missing seven-region parameters. Structural-score labels
-in the supplied images are manuscript annotations; no sensor-level replay has
-been performed for this release.
+this release. Structural-score labels in the supplied images are manuscript
+annotations; no sensor-level replay has been performed for this release.
 
 ## What validation establishes
 

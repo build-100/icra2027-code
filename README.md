@@ -27,6 +27,32 @@ baselines, two seven-node coverage baselines, four component ablations, and the
 corresponding configurations. See [experiments and figures](docs/experiments.md)
 for the simulation environments and physical experiment illustrations.
 
+## Real-world demonstrations
+
+### Small-scale experiment: coverage-only baseline and GEVD
+
+Two robots explore the same partitioned arena. Each clip pairs an overhead view
+of the robots with the evolving map, as shown in the accompanying demo presentation.
+
+| Coverage-only baseline | GEVD |
+|---|---|
+| [![Coverage-only baseline in the small physical arena](docs/assets/demos/small_coverage_only.gif)](docs/assets/demos/small_coverage_only.mp4) | [![GEVD in the small physical arena](docs/assets/demos/small_gevd.gif)](docs/assets/demos/small_gevd.mp4) |
+| [Full video (11.9 s)](docs/assets/demos/small_coverage_only.mp4) | [Full video (13.1 s)](docs/assets/demos/small_gevd.mp4) |
+
+### Large-scale experiment: GEVD in an office environment
+
+The map and robot trajectories appear on the left, alongside two onboard camera
+views on the right.
+
+[![GEVD physical demonstration in the larger office environment](docs/assets/demos/large_gevd.gif)](docs/assets/demos/large_gevd.mp4)
+
+[Full video (43.6 s)](docs/assets/demos/large_gevd.mp4) ·
+[Demo details and environment topology](docs/demos.md)
+
+*GIFs loop at the supplied clips' playback speed. The linked MP4s retain their
+full duration and original video resolution. These are qualitative demonstrations;
+clip duration is not a measurement of task completion time.*
+
 ## Requirements and installation
 
 Use **Python 3.12**. The graph-level simulator runs on CPU and does not require
@@ -121,7 +147,8 @@ The verification command checks the public source/configuration release. If loca
 result bundles are available, `python scripts/verify_release.py --local-results`
 also checks their saved routes.
 
-The public repository distributes code, configurations, and manuscript figures.
+The public repository distributes code, configurations, manuscript figures, and
+curated demonstration videos.
 Generated runs, historical logs, model checkpoints, and physical ROS recordings
 are **not uploaded**; `results/` documents their local organization. A fresh run
 produces new evidence and does not itself establish reproduction of a manuscript

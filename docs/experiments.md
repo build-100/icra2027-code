@@ -57,7 +57,13 @@ These are not multi-seed means or final-policy scores. See the
 | Without fusion reward | 12.807 | 0.236 | Yes |
 | Raw structural score | 12.561 | 0.291 | No |
 
-## Physical setup
+## Physical demonstration videos
+
+The [demo gallery](demos.md) includes GIF previews and full MP4s for the small
+physical comparison and the larger office experiment. The latter has a separate
+58-region topology supplied with the demo presentation.
+
+## Small-scale physical setup
 
 | Experiment arena | Robot platform |
 |---|---|
